@@ -162,6 +162,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6d23ef9507cda4bfddd6f908f726610e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed7ec7f4060a5abf1c2400b7fb2025e5" id="r_aed7ec7f4060a5abf1c2400b7fb2025e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSbList.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed7ec7f4060a5abf1c2400b7fb2025e5">insert</a> (<a class="el" href="classSoField.html">SoField</a> *<a class="el" href="classSbList.html">field</a>, <a class="el" href="classSbList.html">const</a> int <a class="el" href="classSbList.html">insertbefore</a>)</td></tr>
 <tr class="separator:aed7ec7f4060a5abf1c2400b7fb2025e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00521b9d1a62024e556b4378a0e66d9" id="r_ac00521b9d1a62024e556b4378a0e66d9"><td class="memItemLeft" align="right" valign="top"><a id="ac00521b9d1a62024e556b4378a0e66d9" name="ac00521b9d1a62024e556b4378a0e66d9"></a>
+<a class="el" href="classSoFieldList.html">SoFieldList</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSbList.html">const</a> <a class="el" href="classSoFieldList.html">SoFieldList</a> &amp;<a class="el" href="classSbList.html">l</a>)=<a class="el" href="classSbList.html">default</a></td></tr>
+<tr class="separator:ac00521b9d1a62024e556b4378a0e66d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35a5f85c80d0464f52177ae7a00b710c" id="r_a35a5f85c80d0464f52177ae7a00b710c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoField.html">SoField</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35a5f85c80d0464f52177ae7a00b710c">operator[]</a> (<a class="el" href="classSbList.html">const</a> int idx) <a class="el" href="classSbList.html">const</a></td></tr>
 <tr class="separator:a35a5f85c80d0464f52177ae7a00b710c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e979663b9114d06f285047727c97c4" id="r_ab3e979663b9114d06f285047727c97c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSbList.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3e979663b9114d06f285047727c97c4">set</a> (<a class="el" href="classSbList.html">const</a> int idx, <a class="el" href="classSoField.html">SoField</a> *<a class="el" href="classSbList.html">field</a>)</td></tr>
@@ -352,7 +355,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns element at <em>index</em>. Does <em>not</em> expand array bounds if <em>index</em> is outside the list.  </p>
+<p>Returns element at <em>index</em>. Does <em>not</em> expand array bounds if <em>index</em> is outside the list. Throws <code>std::out_of_range</code> for an invalid index.  </p>
 <p>Overloaded from parent to return an <a class="el" href="classSoField.html" title="The SoField class is the top-level abstract base class for fields.">SoField</a> pointer.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classSbPList.html#a2d0ec1b326fe82fe6c2f19553a68b671">SbPList::get()</a> </dd></dl>
 
@@ -385,7 +388,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Insert <em>item</em> at index <em>insertbefore</em>.</p>
-<p><em>insertbefore</em> should not be larger than the current number of items in the list.  </p>
+<p><em>insertbefore</em> may be equal to, but not larger than, the current number of items in the list. Throws <code>std::out_of_range</code> for an invalid index.  </p>
 <p>Overloaded from parent to accept an <a class="el" href="classSoField.html" title="The SoField class is the top-level abstract base class for fields.">SoField</a> pointer argument.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classSbPList.html#af500b13baee20036c51b7746c9b046b0">SbPList::insert()</a> </dd></dl>
 
@@ -414,7 +417,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns element at <em>index</em>.</p>
-<p>Will automatically expand the size of the internal array if <em>index</em> is outside the current bounds of the list. The values of any additional pointers are then set to <code>NULL</code>.  </p>
+<p>Will automatically expand the size of the internal array if <em>index</em> is outside the current bounds of the list. The values of any additional pointers are then set to <code>NULL</code>.</p>
+<p>Throws <code>std::out_of_range</code> for a negative index.  </p>
 <p>Overloaded from parent to return an <a class="el" href="classSoField.html" title="The SoField class is the top-level abstract base class for fields.">SoField</a> pointer.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classSbPList.html#a8f4ae28407482bca1ee8c6c7d67a1584">SbPList::operator[]()</a> </dd></dl>
 
@@ -460,7 +464,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classSoFieldList.html">SoFieldList</a></li>
-    <li class="footer">Generated on Tue Aug 11 2026 03:59:35 for Coin by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Generated on Mon Nov 23 2026 10:36:29 for Coin by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>
